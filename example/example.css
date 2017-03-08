@@ -1,0 +1,33 @@
+.container {
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.content {
+    line-height: 1.5;
+    padding: 20px 10px;
+    border: 10px solid;
+    margin: 30px 0;
+}
+
+.fade-toggle-button {
+    display: block;
+}
+
+.box {
+    margin-right: 6px;
+    width: 300px;
+    background-color: #aaa;
+    line-height: 8;
+    text-align: center;
+    display: inline-block;
+}
+
+button {
+    margin: 10px 0;
+}
+
+.fade-in-button,
+.fade-out-button {
+    display: inline-block;
+}

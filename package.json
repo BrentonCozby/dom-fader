@@ -1,0 +1,27 @@
+{
+  "name": "dom-fader",
+  "version": "1.0.0",
+  "description": "Like jQuery's fadeToggle(), fadeIn(), & fadeOut(), but without all the baggage.",
+  "main": "dist/dom-fader.js",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrentonCozby/dom-fader.git"
+  },
+  "keywords": [
+    "jQuery",
+    "animation",
+    "fadeIn",
+    "fadeOut",
+    "fadeToggle",
+    "vanilla-js"
+  ],
+  "author": "Brenton Cozby <brenton.cozby@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BrentonCozby/dom-fader/issues"
+  },
+  "homepage": "https://github.com/BrentonCozby/dom-fader#readme"
+}
