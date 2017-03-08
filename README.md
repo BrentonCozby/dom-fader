@@ -1,47 +1,45 @@
-# DOM-slider
-It works like jQuery's slideToggle(), slideDown(), &amp; slideUp(), but does not use display: none.
-Uses CSS3 transitions and element.scrollHeight to animate the height of elements with an unknown height.
+# dom-fader
+It works like jQuery's fadeToggle(), fadeIn(), &amp; fadeOut().
+Uses CSS3 transitions to animate the opacity. Saves the original display value, such as 'inline' or 'block'.
+
+
+[**dom-slider**](https://github.com/BrentonCozby/dom-slider) is a thing too.
 
 ###Features:
-* Slides elements with a known or *unknown* height
-* Slides the height, padding, border, and margin (just the top and bottom values).
-* May slide multiple elements at once
-* Returns a Promise resolved with the element
-* Hides elements in a screen-reader-friendly way
+* Fading-out will save the original display value, such as 'inline-block', and fading-in will set the display back to the original value of 'inline-block' or whatever value it originally had
+* May fade multiple elements at once
+* Returns a Promise resolved with the element. Allows method-chaining
 * Zero Dependencies and written in plain JavaScript (compiled to ES5)
 
 ###Example Usage:
-First, place the DOM-slider.js file in your code somewhere. Then do stuff like below:
+First, place the dom-fader.js file in your code somewhere. Then do stuff like below:
 ```JavaScript
-import 'dom-slider' // if using ES6 modules
+import 'dom-fader' // if using ES6 modules
 
 const box = document.querySelector('.box')
 
-box.slideToggle()
+box.fadeToggle()
 
-box.slideUp(1200)
+box.fadeOut(1200)
 
-box.slideDown(800, 'easeInOut')
+box.fadeIn(800, 'easeOut')
 
-box.slideDown(500).then(box => box.slideUp(300))
+box.fadeIn(500).then(box => box.fadeOut(300))
 ```
 ###Install:
 ```
-bower install dom-slider --save
+bower install dom-fader --save
 
-npm install dom-slider --save
+npm install dom-fader --save
 ```
 or include a script tag with the file served from a CDN:
 ```HTML
-<script src="https://cdn.rawgit.com/BrentonCozby/DOM-slider/7defae4e/dist/DOM-slider.js"></script>
+<script src="https://cdn.rawgit.com/BrentonCozby/dom-fader/006cbd6b/dist/dom-fader.js"></script>
 ```
 
 
 ###Options:
-No arguments required, but you may give 1 or 2 arguments to slideToggle, slideDown, and slideUp:
+No arguments required, but you may give 1 or 2 arguments to fadeToggle, fadeIn, and fadeOut:
 ```JavaScript
-slideDown(speedInMilliseconds, CSSTransitionTimingFunction)
+fadeIn(speedInMilliseconds, CSSTransitionTimingFunction)
 ```
-
-###Print Styling:
-DOM-slider removes the DOM-slider-hidden CSS class from all elements before printing.
