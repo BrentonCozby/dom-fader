@@ -2,6 +2,9 @@
 It works like jQuery's fadeToggle(), fadeIn(), &amp; fadeOut().
 Uses CSS3 transitions to animate the opacity. Saves the original display value, such as 'inline' or 'block'.
 
+
+[**dom-slider**](https://github.com/BrentonCozby/dom-slider) is a thing too.
+
 ###Features:
 * Fading-out will save the original display value, such as 'inline-block' and fading-in will set the display back to the original value of 'inline-block' or whatever value it originally had
 * May fade multiple elements at once
