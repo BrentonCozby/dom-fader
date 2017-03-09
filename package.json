@@ -1,6 +1,6 @@
 {
   "name": "dom-fader",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Plain JavaScript version of jQuery's fadeToggle(), fadeIn(), & fadeOut(), but without all the baggage.",
   "main": "dist/dom-fader.js",
   "directories": {
