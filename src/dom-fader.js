@@ -36,10 +36,13 @@ function fade(element, _speed, direction, easing) {
     // remove temp styles, add DOM-fader-hidden class, and return the element
     let done = new Promise(function(resolve, reject) {
         setTimeout(function() {
-            if(direction === 'in') element.classList.remove('DOM-fader-hidden')
-            if(direction === 'out') element.classList.add('DOM-fader-hidden')
             element.removeAttribute('style')
             element.removeAttribute('data-fading')
+            if(direction === 'in') {
+                element.classList.remove('DOM-fader-hidden')
+                s.display = CSSvalues[element.dataset.domFaderId].display || 'block'
+            }
+            if(direction === 'out') element.classList.add('DOM-fader-hidden')
             resolve(element)
         }, speed)
     })
