@@ -1,6 +1,6 @@
 // Save the display values of new elements before fading out,
 // so that fadeIn will go back to the original display value
-let displayStates = {}
+let CSSvalues = {}
 
 function fade(element, _speed, direction, easing) {
     // abort fading if is already fading in or out
@@ -9,15 +9,16 @@ function fade(element, _speed, direction, easing) {
     element.dataset.fading = true
 
     const s = element.style
-    const displayState = window.getComputedStyle(element).getPropertyValue('display')
+    const thisDisplay = window.getComputedStyle(element).getPropertyValue('display')
+    const thisOpacity = window.getComputedStyle(element).getPropertyValue('opacity')
     const speed = (_speed) ? _speed : (_speed === 0) ? 0 : 300
 
     // add/remove the styles that will animate the element
     if(direction === 'in') {
         s.opacity = '0'
-        s.display = displayStates[element.dataset.domFaderId] || 'block'
+        s.display = CSSvalues[element.dataset.domFaderId].display || 'block'
         s.transition = `opacity ${speed}ms ${easing || ''}`
-        setTimeout(() => s.opacity = '1', 10)
+        setTimeout(() => s.opacity = CSSvalues[element.dataset.domFaderId].opacity || '1', 10)
     }
     if(direction === 'out') {
         s.transition = `opacity ${speed}ms ${easing || ''}`
@@ -25,7 +26,10 @@ function fade(element, _speed, direction, easing) {
         if(!element.dataset.domFaderId) {
             const id = Math.random()
             element.dataset.domFaderId = id
-            displayStates[id] = displayState
+            CSSvalues[id] = {
+                display: thisDisplay,
+                opacity: thisOpacity
+            }
         }
     }
 

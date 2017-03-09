@@ -2,7 +2,7 @@
 
 // Save the display values of new elements before fading out,
 // so that fadeIn will go back to the original display value
-var displayStates = {};
+var CSSvalues = {};
 
 function fade(element, _speed, direction, easing) {
     // abort fading if is already fading in or out
@@ -11,16 +11,17 @@ function fade(element, _speed, direction, easing) {
     element.dataset.fading = true;
 
     var s = element.style;
-    var displayState = window.getComputedStyle(element).getPropertyValue('display');
+    var thisDisplay = window.getComputedStyle(element).getPropertyValue('display');
+    var thisOpacity = window.getComputedStyle(element).getPropertyValue('opacity');
     var speed = _speed ? _speed : _speed === 0 ? 0 : 300;
 
     // add/remove the styles that will animate the element
     if (direction === 'in') {
         s.opacity = '0';
-        s.display = displayStates[element.dataset.domFaderId] || 'block';
+        s.display = CSSvalues[element.dataset.domFaderId].display || 'block';
         s.transition = 'opacity ' + speed + 'ms ' + (easing || '');
         setTimeout(function () {
-            return s.opacity = '1';
+            return s.opacity = CSSvalues[element.dataset.domFaderId].opacity || '1';
         }, 10);
     }
     if (direction === 'out') {
@@ -29,7 +30,10 @@ function fade(element, _speed, direction, easing) {
         if (!element.dataset.domFaderId) {
             var id = Math.random();
             element.dataset.domFaderId = id;
-            displayStates[id] = displayState;
+            CSSvalues[id] = {
+                display: thisDisplay,
+                opacity: thisOpacity
+            };
         }
     }
 
@@ -50,7 +54,7 @@ function fade(element, _speed, direction, easing) {
 (function DOMfaderInit() {
     var sheet = document.createElement('style');
     sheet.id = 'fadeCSSStyles';
-    sheet.innerHTML = '.DOM-fader-hidden {display: none;}';
+    sheet.innerHTML = '\n        .DOM-fader-hidden {\n            display: none;\n        }\n    ';
     document.head.appendChild(sheet);
 
     Object.prototype.fadeIn = function (_speed, easing) {
