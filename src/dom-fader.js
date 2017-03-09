@@ -9,6 +9,7 @@ function fade(element, _speed, direction, easing) {
     element.dataset.fading = true
 
     const s = element.style
+    const savedValues = CSSvalues[element.dataset.domFaderId]
     const thisDisplay = window.getComputedStyle(element).getPropertyValue('display')
     const thisOpacity = window.getComputedStyle(element).getPropertyValue('opacity')
     const speed = (_speed) ? _speed : (_speed === 0) ? 0 : 300
@@ -16,9 +17,9 @@ function fade(element, _speed, direction, easing) {
     // add/remove the styles that will animate the element
     if(direction === 'in') {
         s.opacity = '0'
-        s.display = CSSvalues[element.dataset.domFaderId].display || 'block'
+        s.display = (savedValues) ? savedValues.display : 'block'
         s.transition = `opacity ${speed}ms ${easing || ''}`
-        setTimeout(() => s.opacity = CSSvalues[element.dataset.domFaderId].opacity || '1', 10)
+        setTimeout(() => s.opacity = (savedValues) ? savedValues.opacity : '1', 10)
     }
     if(direction === 'out') {
         s.transition = `opacity ${speed}ms ${easing || ''}`
@@ -40,7 +41,7 @@ function fade(element, _speed, direction, easing) {
             element.removeAttribute('data-fading')
             if(direction === 'in') {
                 element.classList.remove('DOM-fader-hidden')
-                s.display = CSSvalues[element.dataset.domFaderId].display || 'block'
+                s.display = (savedValues) ? savedValues.display : 'block'
             }
             if(direction === 'out') element.classList.add('DOM-fader-hidden')
             resolve(element)
