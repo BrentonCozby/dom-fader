@@ -16,6 +16,15 @@ function fade(element, _speed, direction, easing) {
     var thisOpacity = window.getComputedStyle(element).getPropertyValue('opacity');
     var speed = _speed ? _speed : _speed === 0 ? 0 : 300;
 
+    if (!element.dataset.domFaderId) {
+        var id = Math.random();
+        element.dataset.domFaderId = id;
+        CSSvalues[id] = {
+            display: thisDisplay === 'none' ? 'block' : thisDisplay,
+            opacity: thisOpacity === '0' ? '1' : thisOpacity
+        };
+    }
+
     // add/remove the styles that will animate the element
     if (direction === 'in') {
         s.opacity = '0';
@@ -28,14 +37,6 @@ function fade(element, _speed, direction, easing) {
     if (direction === 'out') {
         s.transition = 'opacity ' + speed + 'ms ' + (easing || '');
         s.opacity = '0';
-        if (!element.dataset.domFaderId) {
-            var id = Math.random();
-            element.dataset.domFaderId = id;
-            CSSvalues[id] = {
-                display: thisDisplay,
-                opacity: thisOpacity === 'none' ? 'block' : thisOpacity
-            };
-        }
     }
 
     // remove temp styles, add DOM-fader-hidden class, and return the element
@@ -58,7 +59,7 @@ function fade(element, _speed, direction, easing) {
 (function DOMfaderInit() {
     var sheet = document.createElement('style');
     sheet.id = 'fadeCSSStyles';
-    sheet.innerHTML = '\n.DOM-fader-hidden {\ndisplay: none;\n}\n';
+    sheet.innerHTML = '\n        .DOM-fader-hidden {\n            display: none;\n        }\n    ';
     document.head.appendChild(sheet);
 
     Object.prototype.fadeIn = function (_speed, easing) {
