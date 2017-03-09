@@ -28,7 +28,7 @@ function fade(element, _speed, direction, easing) {
             element.dataset.domFaderId = id
             CSSvalues[id] = {
                 display: thisDisplay,
-                opacity: thisOpacity
+                opacity: (thisOpacity === 'none') ? 'block' : thisOpacity
             }
         }
     }
