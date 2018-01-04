@@ -3,6 +3,12 @@
   "version": "1.1.3",
   "description": "Plain JavaScript version of jQuery's fadeToggle(), fadeIn(), & fadeOut(), but without all the baggage.",
   "main": "dist/dom-fader.js",
+  "scripts": {
+    "babel": "babel src/dom-fader.js --out-file dist/dom-fader.js",
+    "babel:watch": "babel src --watch --out-file dist/dom-fader.js",
+    "uglify:js": "uglifyjs dist/dom-fader.js -o dist/dom-fader.js --compress --mangle",
+    "prod": "npm run babel && npm run uglify:js"
+  },
   "directories": {
     "example": "example"
   },
@@ -23,5 +29,11 @@
   "bugs": {
     "url": "https://github.com/BrentonCozby/dom-fader/issues"
   },
-  "homepage": "https://github.com/BrentonCozby/dom-fader#readme"
+  "homepage": "https://github.com/BrentonCozby/dom-fader#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "uglify-js": "^3.3.4"
+  }
 }
