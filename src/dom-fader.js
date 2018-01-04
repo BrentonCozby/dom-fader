@@ -70,7 +70,7 @@ function fade(element, fadeSpeed, direction, easing) {
     `
     document.head.appendChild(sheet)
 
-    Object.defineProperty(Object.prototype, 'fadeIn', {
+    Object.defineProperty(Node.prototype, 'fadeIn', {
         enumerable: false,
         configurable: false,
         writable: false,
@@ -79,7 +79,7 @@ function fade(element, fadeSpeed, direction, easing) {
         }
     })
 
-    Object.defineProperty(Object.prototype, 'fadeOut', {
+    Object.defineProperty(Node.prototype, 'fadeOut', {
         enumerable: false,
         configurable: false,
         writable: false,
@@ -88,7 +88,7 @@ function fade(element, fadeSpeed, direction, easing) {
         }
     })
 
-    Object.defineProperty(Object.prototype, 'fadeToggle', {
+    Object.defineProperty(Node.prototype, 'fadeToggle', {
         enumerable: false,
         configurable: false,
         writable: false,
