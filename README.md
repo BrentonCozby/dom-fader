@@ -1,4 +1,6 @@
 # dom-fader
+[![Known Vulnerabilities](https://snyk.io/test/github/brentoncozby/dom-fader/badge.svg?targetFile=package.json)](https://snyk.io/test/github/brentoncozby/dom-fader?targetFile=package.json)
+
 It works like jQuery's fadeToggle(), fadeIn(), &amp; fadeOut().
 Uses CSS3 transitions to animate the opacity. Saves the original display value, such as 'inline' or 'block'.
 
