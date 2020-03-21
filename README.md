@@ -43,3 +43,6 @@ fadeIn({
   visibleDisplayValue = 'block'
 })
 ```
+
+### Print Styling:
+dom-fader removes the DOM-fader-hidden CSS class from all elements before printing and adds them back after printing
