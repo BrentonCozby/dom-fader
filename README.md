@@ -13,7 +13,7 @@ Uses CSS3 transitions to animate the opacity. Saves the original display value, 
 * Zero Dependencies and written in plain JavaScript (compiled to ES5)
 
 ### Example Usage:
-[dom-fader CDN link]()
+[dom-fader CDN link](https://rawcdn.githack.com/BrentonCozby/dom-fader/819f5d67d6461909a742cb0f85aa6f25780bfdd3/dist/dom-fader.js)
 
 First, place the dom-fader CDN link in your html file above your own JavaScript files. Hide all the elements that you want to fade in/toggle using display: none in CSS. Then do stuff like below:
 ```JavaScript
